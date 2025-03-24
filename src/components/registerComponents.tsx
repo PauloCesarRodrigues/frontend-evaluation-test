@@ -1,72 +1,47 @@
 "use client";
-import { useState } from "react";
-
-type User = {
-  name: string;
-  email: string;
-  password: string;
-};
+import { registerForm, schemaRegister } from "@/schemas/schemaRegister";
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
 
 export const RegistroComponent = () => {
-  const [formData, setFormData] = useState<User>({
-    name: "",
-    email: "",
-    password: "",
-  });
+ 
 
-  const handleChangeFormData = (e: any) => {
-    console.log(e);
-
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e: any) => {
-    console.log(formData);
-  };
+  const { register, handleSubmit, formState: { errors } } = useForm<registerForm>({resolver: zodResolver(schemaRegister)})
 
   return (
-    <div>
-      {/* <form onSubmit={handleSubmit}> */}
+    <form onSubmit={(handleSubmit((data) => console.log(data)))}>
       <div>
         <label>Nome</label>
         <input
-          id="name"
+          {...register("name")}
           name="name"
           type="text"
-          value={formData.name}
-          onChange={handleChangeFormData}
         ></input>
+        {errors.name && <p>{errors.name.message}</p>}
       </div>
 
       <div>
         <label>Email</label>
         <input
-          id="email"
+          {...register("email")}
           name="email"
           type="text"
-          value={formData.email}
-          onChange={handleChangeFormData}
         ></input>
+        {errors.email && <p>{errors.email.message}</p>}
       </div>
 
       <div>
         <label>Senha</label>
         <input
-          id="password"
+          {...register("password")}
           name="password"
-          type="text"
-          value={formData.password}
-          onChange={handleChangeFormData}
+          type="password"
         ></input>
+        {errors.password && <p>{errors.password.message}</p>}
       </div>
 
-      <button onClick={handleSubmit}>Cadastrar</button>
-      {/* </form> */}
-    </div>
+      <button>Cadastrar</button>
+    </form>
   );
 };
 
-//export default RegistroComponent();
