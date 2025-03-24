@@ -24,49 +24,47 @@ export const RegistroComponent = () => {
   };
 
   const handleSubmit = (e: any) => {
-    console.log(e);
+    console.log(formData);
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Nome</label>
-          <input
-            id="nome"
-            name="nome"
-            type="text"
-            value={formData.name}
-            onChange={handleChangeFormData}
-          ></input>
-        </div>
+      {/* <form onSubmit={handleSubmit}> */}
+      <div>
+        <label>Nome</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          value={formData.name}
+          onChange={handleChangeFormData}
+        ></input>
+      </div>
 
-        <div>
-          <label>Email</label>
-          <input
-            id="email"
-            name="email"
-            type="text"
-            value={formData.email}
-            onChange={handleChangeFormData}
-          ></input>
-        </div>
+      <div>
+        <label>Email</label>
+        <input
+          id="email"
+          name="email"
+          type="text"
+          value={formData.email}
+          onChange={handleChangeFormData}
+        ></input>
+      </div>
 
-        <div>
-          <label>Senha</label>
-          <input
-            id="password"
-            name="password"
-            type="text"
-            value={formData.password}
-            onChange={handleChangeFormData}
-          ></input>
-        </div>
+      <div>
+        <label>Senha</label>
+        <input
+          id="password"
+          name="password"
+          type="text"
+          value={formData.password}
+          onChange={handleChangeFormData}
+        ></input>
+      </div>
 
-        <button type="submit" onClick={handleSubmit}>
-          Cadastrar
-        </button>
-      </form>
+      <button onClick={handleSubmit}>Cadastrar</button>
+      {/* </form> */}
     </div>
   );
 };

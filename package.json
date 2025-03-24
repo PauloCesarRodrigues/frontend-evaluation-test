@@ -12,7 +12,8 @@
     "frontend-evaluation-test": "file:",
     "next": "15.2.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "simpledotcss": "^2.3.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
